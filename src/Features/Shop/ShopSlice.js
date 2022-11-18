@@ -1,34 +1,41 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+// ACTIONS TYPES
 const STATUS = Object.freeze({
    IDLE: 'idle',
    ERROR: 'error',
    LOADING: 'loading',
 });
 
+// initial state object.
 const INITIAL_STATE = {
    products: null,
    status: STATUS.IDLE,
 };
 
+// Reducer slice
 const shopSlice = createSlice({
    name: 'Shop',
    initialState: INITIAL_STATE,
    reducers: {
+      // actions
       getProductLoading: (state, action) => {
          state.status = action.payload;
       },
+
+      // actions
       products: (state, action) => {
          state.products = action.payload;
       },
    },
+
+   // all fetch action function.
    extraReducers: (builder) => {
       builder
          .addCase(fetchProducts.pending, (state) => {
             state.status = STATUS.LOADING;
          })
          .addCase(fetchProducts.fulfilled, (state, action) => {
-            console.log(action);
             state.products = action.payload;
             state.status = STATUS.IDLE;
          })
@@ -43,6 +50,8 @@ export const fetchProducts = createAsyncThunk('shop/products', async () => {
    const data = await res.json();
    return data;
 });
+
+export default shopSlice;
 
 // export const fetchProducts = function() {
 //    return async function(dispatch, getState) {
@@ -62,5 +71,3 @@ export const fetchProducts = createAsyncThunk('shop/products', async () => {
 //       }
 //    };
 // };
-
-export default shopSlice;
