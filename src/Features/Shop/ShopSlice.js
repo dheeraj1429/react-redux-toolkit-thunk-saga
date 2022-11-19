@@ -53,6 +53,7 @@ export const fetchProducts = createAsyncThunk('shop/products', async () => {
 
 export default shopSlice;
 
+// nomal async function.
 // export const fetchProducts = function() {
 //    return async function(dispatch, getState) {
 //       dispatch(getProductLoading(STATUS.LOADING));

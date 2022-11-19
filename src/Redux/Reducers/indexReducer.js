@@ -9,8 +9,6 @@ const INITAL_STATE = {
 const indexReducer = function(state = INITAL_STATE, action) {
    switch (action.type) {
       case ACTION_TYPES.GET_PRODUCTS:
-         console.log(action.payload);
-
          return {
             products: action.data,
             productsLoading: false,

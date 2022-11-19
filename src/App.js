@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import './App.css';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useSelector, useDispatch } from '@reduxjs/toolkit';
+import { useSelector, useDispatch } from 'react-redux';
 // import { fetchProducts } from './Features/Shop/ShopSlice';
-import { useDispatch } from 'react-redux';
-import { fetchProducts } from './Redux/Actions/indexActions';
+// import { fetchProducts } from './Redux/Actions/indexActions';
+import { fetchProducts } from './Features/Products/productsSlice';
 
 function App() {
    const dispatch = useDispatch();
