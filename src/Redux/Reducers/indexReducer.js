@@ -1,39 +1,26 @@
-import { ACTION_TYPES } from '../ActionTypes/ActionTypes';
+import { ACTION_TYPES } from '../ActionTypes/actionTypes';
 
-const INITIAL_STATE = {
+const INITAL_STATE = {
    products: null,
    productsLoading: false,
    productsError: null,
 };
 
-const indexReducer = function(state = INITIAL_STATE, action) {
+const indexReducer = function(state = INITAL_STATE, action) {
    switch (action.type) {
-      case ACTION_TYPES.FETCH_PRODUCTS:
+      case ACTION_TYPES.GET_PRODUCTS:
+         console.log(action.payload);
+
          return {
-            ...state,
-            products: action.payload,
+            products: action.data,
             productsLoading: false,
             productsError: null,
          };
-
-      case ACTION_TYPES.FETCH_PRODUCTS_LOADING:
-         return {
-            ...state,
-            productsLoading: action.payload,
-            productsError: null,
-         };
-
-      case ACTION_TYPES.PRODUCT_FETCH_ERROR:
-         return {
-            ...state,
-            productsError: action.payload,
-            productsLoading: false,
-         };
-
-      default:
+      default: {
          return {
             ...state,
          };
+      }
    }
 };
 
